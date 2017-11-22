@@ -1,0 +1,24 @@
+Type: AWS::DynamoDB::Table
+Properties:
+  TableName: Clients
+  AttributeDefinitions:
+    - AttributeName: clientId
+      AttributeType: S
+
+  KeySchema:
+    - AttributeName: clientId
+      KeyType: HASH
+
+  GlobalSecondaryIndexes:
+    - IndexName: ADClientIdIndex
+      KeySchema:
+        - AttributeName: clientId
+          KeyType: HASH
+      Projection:
+        ProjectionType: ALL
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+  ProvisionedThroughput:
+      ReadCapacityUnits: 5
+      WriteCapacityUnits: 5

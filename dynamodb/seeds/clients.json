@@ -1,0 +1,442 @@
+[
+  {
+    "clientId": "bb84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-839d",
+    "fmtenantId": "bb84fb90-a2c4-bde1-830d-7b25c5ee735b",
+    "adtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+    "trtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775e",
+    "status": "Registered",
+    "name": "ABC Pension Fund",
+    "pictureUrl": "/path/to/profile.pic",
+    "address": {
+      "number": "1",
+      "street": "Street ABC",
+      "city": "City ABC",
+      "postalCode": "Postcode ABC"
+    },
+    "trustee": {
+      "name": "A Corporate Trustee",
+      "isCorporate": true
+    },
+    "advisor": {
+      "id": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "name": "Deloitte"
+    },
+    "fundManager": {
+      "id": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+      "name": "LGIM"
+    },
+    "assetsValue": 5,
+    "durationOfLiabilities": 10,
+    "noOfSignatures": 3,
+    "proportionLinkedToInflation": 50,
+    "proportionOfBonds": 70,
+    "proportionOfEquity": 30,
+    "returnTargetAboveGilts": 1.0,
+    "schemeLegalEntitiyName": "ABC Pension Fund",
+    "schemeYearEndDate": 1508309471156,
+    "bankAccount": {
+      "accountName": "CPF Pension Funds",
+      "accountNumber": "123456789",
+      "bankAddress": {
+        "city": "London"
+      },
+      "bankIdentifierCode": "130e5",
+      "bankName": "International Bank of London",
+      "internationalBankAccountNumber": "123456",
+      "paymentReference": "64e1231",
+      "sortCode": "204"
+    },
+    "avcProviders": [
+      {
+        "name": "AVC Co. A",
+        "description": "AVC Co. description"
+      }
+    ],
+    "directors": [
+      {
+        "name": "A Trustee",
+        "email": "a@email.com"
+      },
+      {
+        "name": "B Trustee",
+        "email": "b@email.com"
+      }
+    ],
+    "updatedAt": 1508309471156,
+    "createdAt": 1508309471156
+  },
+  {
+    "clientId": "bb84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-838d",
+    "fmtenantId": "bb84fb90-a2c4-bde1-830d-7b25c5ee735b",
+    "adtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+    "trtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775e",
+    "status": "Pending",
+    "name": "DEF Pension Fund",
+    "pictureUrl": "/path/to/profile.pic",
+    "address": {
+      "number": "1",
+      "street": "Street DEF",
+      "city": "City DEF",
+      "postalCode": "Postcode DEF"
+    },
+    "trustee": {
+      "name": "A Corporate Trustee",
+      "isCorporate": true
+    },
+    "advisor": {
+      "id": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "name": "Deloitte"
+    },
+    "fundManager": {
+      "id": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+      "name": "LGIM"
+    },
+    "assetsValue": 7,
+    "durationOfLiabilities": 15,
+    "noOfSignatures": 3,
+    "proportionLinkedToInflation": 60,
+    "proportionOfBonds": 60,
+    "proportionOfEquity": 30,
+    "returnTargetAboveGilts": 1.0,
+    "schemeLegalEntitiyName": "DEF Pension Fund",
+    "schemeYearEndDate": 1508309471156,
+    "bankAccount": {
+      "accountName": "CPF Pension Funds",
+      "accountNumber": "123456789",
+      "bankAddress": {
+        "city": "London"
+      },
+      "bankIdentifierCode": "130e5",
+      "bankName": "International Bank of London",
+      "internationalBankAccountNumber": "123456",
+      "paymentReference": "64e1231",
+      "sortCode": "204"
+    },
+    "avcProviders": [
+      {
+        "name": "AVC Co. A",
+        "description": "AVC Co. description"
+      }
+    ],
+    "directors": [
+      {
+        "name": "A Trustee",
+        "email": "a@email.com"
+      },
+      {
+        "name": "B Trustee",
+        "email": "b@email.com"
+      },
+      {
+        "name": "C Trustee",
+        "email": "c@email.com"
+      }
+    ],
+    "updatedAt": 1508309471156,
+    "createdAt": 1508309471156
+  },
+  {
+    "clientId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-830d",
+    "fmtenantId": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+    "adtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+    "trtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775e",
+    "status": "Pending",
+    "name": "GHI Pension Fund",
+    "pictureUrl": "/path/to/profile.pic",
+    "address": {
+      "number": "1",
+      "street": "Street GHI",
+      "city": "City GHI",
+      "postalCode": "Postcode GHI"
+    },
+    "trustee": {
+      "name": "A Corporate Trustee",
+      "isCorporate": true
+    },
+    "advisor": {
+      "id": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "name": "Deloitte"
+    },
+    "fundManager": {
+      "id": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+      "name": "LGIM"
+    },
+    "assetsValue": 10,
+    "durationOfLiabilities": 20,
+    "noOfSignatures": 3,
+    "proportionLinkedToInflation": 70,
+    "proportionOfBonds": 50,
+    "proportionOfEquity": 30,
+    "returnTargetAboveGilts": 2.0,
+    "schemeLegalEntitiyName": "ABC Pension Fund",
+    "schemeYearEndDate": 1508309471156,
+    "bankAccount": {
+      "accountName": "GHI Pension Funds",
+      "accountNumber": "123456789",
+      "bankAddress": {
+        "city": "London"
+      },
+      "bankIdentifierCode": "130e5",
+      "bankName": "International Bank 3",
+      "internationalBankAccountNumber": "123456",
+      "paymentReference": "64e1231",
+      "sortCode": "204"
+    },
+    "avcProviders": [
+      {
+        "name": "AVC Co. C",
+        "description": "AVC Co. description"
+      }
+    ],
+    "directors": [
+      {
+        "name": "A Trustee",
+        "email": "a@email.com"
+      },
+      {
+        "name": "B Trustee",
+        "email": "b@email.com"
+      },
+      {
+        "name": "C Trustee",
+        "email": "c@email.com"
+      },
+      {
+        "name": "D Trustee",
+        "email": "d@email.com"
+      }
+    ],
+    "updatedAt": 1508309471156,
+    "createdAt": 1508309471156
+  },
+  {
+    "clientId": "bb84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-836d",
+    "fmtenantId": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+    "adtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+    "trtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775e",
+    "status": "Funded",
+    "name": "JKL Pension Fund",
+    "pictureUrl": "/path/to/profile.pic",
+    "address": {
+      "number": "1",
+      "street": "Street JKL",
+      "city": "City JKL",
+      "postalCode": "Postcode JKL"
+    },
+    "trustee": {
+      "name": "D Corporate Trustee",
+      "isCorporate": true
+    },
+    "advisor": {
+      "id": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "name": "Deloitte"
+    },
+    "fundManager": {
+      "id": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+      "name": "LGIM"
+    },
+    "assetsValue": 12,
+    "durationOfLiabilities": 20,
+    "noOfSignatures": 3,
+    "proportionLinkedToInflation": 70,
+    "proportionOfBonds": 75,
+    "proportionOfEquity": 30,
+    "returnTargetAboveGilts": 2.0,
+    "schemeLegalEntitiyName": "JKL Pension Fund",
+    "schemeYearEndDate": 1508309471156,
+    "bankAccount": {
+      "accountName": "GHI Pension Funds",
+      "accountNumber": "123456789",
+      "bankAddress": {
+        "city": "London"
+      },
+      "bankIdentifierCode": "130e5",
+      "bankName": "International Bank 4",
+      "internationalBankAccountNumber": "123456",
+      "paymentReference": "64e1231",
+      "sortCode": "204"
+    },
+    "avcProviders": [
+      {
+        "name": "AVC Co. C",
+        "description": "AVC Co. description"
+      }
+    ],
+    "directors": [
+      {
+        "name": "A Trustee",
+        "email": "a@email.com"
+      },
+      {
+        "name": "B Trustee",
+        "email": "b@email.com"
+      },
+      {
+        "name": "C Trustee",
+        "email": "c@email.com"
+      },
+      {
+        "name": "D Trustee",
+        "email": "d@email.com"
+      },
+      {
+        "name": "E Trustee",
+        "email": "e@email.com"
+      }
+    ],
+    "updatedAt": 1508309471156,
+    "createdAt": 1508309471156
+  },
+  {
+    "clientId": "bb84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-837d",
+    "fmtenantId": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+    "adtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+    "trtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775e",
+    "status": "Registered",
+    "name": "MNO Pension Fund",
+    "pictureUrl": "/path/to/profile.pic",
+    "address": {
+      "number": "1",
+      "street": "Street MNO",
+      "city": "City MNO",
+      "postalCode": "Postcode MNO"
+    },
+    "trustee": {
+      "name": "E Corporate Trustee",
+      "isCorporate": true
+    },
+    "advisor": {
+      "id": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "name": "Deloitte"
+    },
+    "fundManager": {
+      "id": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+      "name": "LGIM"
+    },
+    "assetsValue": 15,
+    "durationOfLiabilities": 25,
+    "noOfSignatures": 3,
+    "proportionLinkedToInflation": 80,
+    "proportionOfBonds": 75,
+    "proportionOfEquity": 30,
+    "returnTargetAboveGilts": 2.25,
+    "schemeLegalEntitiyName": "MNO Pension Fund",
+    "schemeYearEndDate": 1508309471156,
+    "bankAccount": {
+      "accountName": "MNO Pension Funds",
+      "accountNumber": "123456789",
+      "bankAddress": {
+        "city": "London"
+      },
+      "bankIdentifierCode": "130e5",
+      "bankName": "International Bank 5",
+      "internationalBankAccountNumber": "123456",
+      "paymentReference": "64e1231",
+      "sortCode": "204"
+    },
+    "avcProviders": [
+      {
+        "name": "AVC Co. E",
+        "description": "AVC Co. description"
+      }
+    ],
+    "directors": [
+      {
+        "name": "A Trustee",
+        "email": "a@email.com"
+      },
+      {
+        "name": "B Trustee",
+        "email": "b@email.com"
+      },
+      {
+        "name": "C Trustee",
+        "email": "c@email.com"
+      }
+    ],
+    "updatedAt": 1508309471156,
+    "createdAt": 1508309471156
+  },
+  {
+    "clientId": "bb84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-835d",
+    "fmtenantId": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+    "adtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+    "trtenantId": "aa84fb90-12c4-11e1-840d-7b25c5ee775e",
+    "status": "Registered",
+    "name": "PQR Pension Fund",
+    "pictureUrl": "/path/to/profile.pic",
+    "address": {
+      "number": "1",
+      "street": "Street PQR",
+      "city": "City PQR",
+      "postalCode": "Postcode PQR"
+    },
+    "trustee": {
+      "name": "F Corporate Trustee",
+      "isCorporate": true
+    },
+    "advisor": {
+      "id": "aa84fb90-12c4-11e1-840d-7b25c5ee775a",
+      "name": "Deloitte"
+    },
+    "fundManager": {
+      "id": "bb84fb90-a2c4-bde1-830d-7b25c5ee735a",
+      "name": "LGIM"
+    },
+    "assetsValue": 17,
+    "durationOfLiabilities": 35,
+    "noOfSignatures": 2,
+    "proportionLinkedToInflation": 85,
+    "proportionOfBonds": 75,
+    "proportionOfEquity": 30,
+    "returnTargetAboveGilts": 2.25,
+    "schemeLegalEntitiyName": "PQR Pension Fund",
+    "schemeYearEndDate": 1508309471156,
+    "bankAccount": {
+      "accountName": "PQR Pension Funds",
+      "accountNumber": "123456789",
+      "bankAddress": {
+        "city": "London"
+      },
+      "bankIdentifierCode": "130e5",
+      "bankName": "International Bank 6",
+      "internationalBankAccountNumber": "123456",
+      "paymentReference": "64e1231",
+      "sortCode": "204"
+    },
+    "avcProviders": [
+      {
+        "name": "AVC Co. F",
+        "description": "AVC Co. description"
+      }
+    ],
+    "directors": [
+      {
+        "name": "A Trustee",
+        "email": "a@email.com"
+      },
+      {
+        "name": "B Trustee",
+        "email": "b@email.com"
+      },
+      {
+        "name": "C Trustee",
+        "email": "c@email.com"
+      },
+      {
+        "name": "D Trustee",
+        "email": "d@email.com"
+      },
+      {
+        "name": "E Trustee",
+        "email": "e@email.com"
+      },
+      {
+        "name": "F Trustee",
+        "email": "f@email.com"
+      }
+    ],
+    "updatedAt": 1508309471156,
+    "createdAt": 1508309471156
+  }
+]
