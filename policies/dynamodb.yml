@@ -11,6 +11,7 @@ Properties:
           - dynamodb:Query
         Resource:
           - arn:aws:dynamodb:*:*:table/Clients
+          - arn:aws:dynamodb:*:*:table/Clients/*
 
 
   Roles:

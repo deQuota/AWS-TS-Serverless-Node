@@ -4,20 +4,18 @@ import { Dynamo} from "./dynamodb/helper";
 import * as Winston from 'winston';
 
 
-export const hello = (event, context, cb) => {
+export const hello = async (event, context, cb) => {
 
-    const params = {
+    const params = {/*
         TableName: 'Clients',
-        IndexName: 'ADClientIdIndex',
-        KeyConditionExpression: 'clientId = :clientId',
-        ExpressionAttributeValues: {
-            ':clientId': 'bb84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-838d'
+            Key: {
 
-        }
+                clientId: 'aa84fb90-12c4-11e1-840d-7b25c5ee775a-bb84fb90-a2c4-bde1-830d'
+            },*/
     },
         dynamo = new Dynamo();
-        dynamo.getDocClient().query(params, (err, data) => {
-            Winston.info('Queried the Client table', JSON.stringify(data, null, 2))
+        dynamo.getCoreClient().listTables(params, (err, data) => {
+            Winston.info('Get Client table item', JSON.stringify(data, null, 2))
             const response = {
                 statusCode: 200,
                 body: JSON.stringify(data),
