@@ -29,7 +29,7 @@ functions:
     events:
       - http:
           method: get
-          path: hello
+          path: clients/{clientId}
 
 
 resources:
