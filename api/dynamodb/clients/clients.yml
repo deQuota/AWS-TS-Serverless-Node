@@ -1,0 +1,14 @@
+Type: AWS::DynamoDB::Table
+Properties:
+  TableName: Clients
+  AttributeDefinitions:
+    - AttributeName: clientId
+      AttributeType: S
+
+  KeySchema:
+    - AttributeName: clientId
+      KeyType: HASH
+
+  ProvisionedThroughput:
+      ReadCapacityUnits: 5
+      WriteCapacityUnits: 5
