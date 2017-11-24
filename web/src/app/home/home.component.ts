@@ -8,12 +8,13 @@ import { ClientService } from "../common/services/client.service";
 })
 export class HomeComponent implements OnInit {
 
-  tenantId: string;
+  tenantId: string ;
   constructor(private clientService: ClientService) { }
 
   ngOnInit() {
   }
   onClickSeeTenantButton(clientId : string){
+    this.tenantId = 'Wait, calling API from AWS ....';
     this.clientService.getClient(clientId).subscribe(
       response => {
            this.tenantId = response.toString();
