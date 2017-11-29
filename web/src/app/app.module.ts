@@ -9,16 +9,22 @@ import {ClientService} from "./common/services/client.service";
 import { HttpClientModule} from "@angular/common/http";
 import { HttpClient} from "@angular/common/http";
 import { HttpHandler} from "@angular/common/http";
+import {InlineEditorModule} from '@qontu/ngx-inline-editor';
+import { FlightSearchComponent } from './flight-search/flight-search.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FlightSearchComponent,
+
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    InlineEditorModule
 
   ],
   providers: [

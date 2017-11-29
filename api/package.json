@@ -20,6 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.155.0",
+    "request": "^2.83.0",
+    "require": "^2.4.20",
     "winston": "^2.4.0"
   }
 }
