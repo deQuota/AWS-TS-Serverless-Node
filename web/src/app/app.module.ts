@@ -6,29 +6,36 @@ import { HomeComponent } from './home/home.component';
 
 import { AppRoutingModule } from "./app-routing.module";
 import {ClientService} from "./common/services/client.service";
+import { FlightsService} from './common/services/flights.service';
 import { HttpClientModule} from "@angular/common/http";
 import { HttpClient} from "@angular/common/http";
 import { HttpHandler} from "@angular/common/http";
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 
+import { AgmCoreModule} from "@agm/core";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    FlightSearchComponent,
+    FlightSearchComponent
+
 
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
-    InlineEditorModule
-
+    InlineEditorModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBsEKEciQmGRaFdGqELGAgudgT-c_0iPGQ'
+    })
   ],
   providers: [
     ClientService,
+    FlightsService,
     HttpClient
 
   ],

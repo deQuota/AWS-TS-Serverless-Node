@@ -1,3 +1,36 @@
-<p>
-  flight-search works!
-</p>
+<h2>There are <span style="color: green">{{allCount}}</span> flights above Australia</h2>
+<!--
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">Select Flight</button>
+  <div class="dropdown-munu" aria-labelledby="dropdownMenuButton"></div>
+  <a class="dropdown-item" *ngFor="let flight of allFlights">{{flight[2]}}</a>
+</div>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+    <i class="mdi mdi-arrow-down-drop-circle-outline"></i>Select Flight
+
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <a class="dropdown-item" *ngFor="let flight of allFlights">
+      {{flight[2]}}
+    </a>
+  </div>
+</div>
+-->
+
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li *ngFor="let flight of allFlights"><a href="#"> {{flight[1]}} Country: {{flight[2]}}</a></li>
+  </ul>
+</div>
+
+
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="2">
+  <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-marker>
+  <agm-polyline [strokeColor]="'#2196f3'">
+   <!-- <agm-polyline-point *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-polyline-point>-->
+  </agm-polyline>
+</agm-map>
