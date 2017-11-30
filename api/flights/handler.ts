@@ -1,7 +1,6 @@
 import {Flight} from "./flight";
 
-let msg:string[];
-let jsn: any;
+let msg: string[] = [];
 let request = require("request");
 let url = "https://opensky-network.org/api/states/all";
 export const flight = async (event, context, callback) => {
@@ -15,36 +14,42 @@ export const flight = async (event, context, callback) => {
     }, (error, response, body) => {
 
         if (!error && response.statusCode === 200) {
-            // console.log(body) // Print the json response
-            msg = body;
-        }
-      //  jsn = JSON.parse(body);
 
-      //  msg = body.states.length;
-        let j =0;
-        for(let i=0; i< body.states.length; i++){
+            let j = 0;
+            for (let i = 0; i < body.states.length; i++) {
 
-            if(body.states[i][5] < 22 && body.states[i][5] > 0){
+                if (body.states[i][5] < 154 && body.states[i][5] > 111) {
+                    if (body.states[i][6] < -9 && body.states[i][6] > -39) {
 
-                msg[j] = body.states[i];
-                j++;
+                        msg[j] = body.states[i];
+                        j++;
+                    }
+                }
             }
+
+            const responseSuccess = {
+                statusCode: 200,
+                body: JSON.stringify({
+                    count: j + 1,
+                    message: msg
+
+                }),
+            };
+            callback(null, responseSuccess);
         }
-        /*const responsee = {
-            statusCode: 200,
-            body: JSON.stringify({
-                message: msg,
-                // input: event,
-            }),
-        };*/
-        const responsee = {
-            statusCode: 200,
-            body: msg,
-        };
-        callback(null, responsee);
+        else {
+            const responseError = {
+                statusCode: 200,
+                body: JSON.stringify({
+                    message: 'Error occurred while calling the third party API'
+
+                }),
+            };
+            callback(null, responseError);
+        }
+
+
     });
 
 
-    // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-    // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
 };
