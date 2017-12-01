@@ -32,7 +32,9 @@
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="4">
     <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]
                 [iconUrl]="(flight[10]>0 && flight[10]<91) ? 'assets/icons/flight045.png': (flight[10]>90 && flight[10]<181)? 'assets/icons/flight135.png':(flight[10]>180 && flight[10]<270)? 'assets/icons/flight225.png':'assets/icons/flight315.png'"
-                [title]="(flight[1]).concat('\n').concat(flight[2])">
+                [title]="(flight[1]).concat('\n').concat(flight[2])"
+                [markerClickable]="true" (markerClick)="onClickFlightSelected(flight[0])"
+      >
 
     </agm-marker>
     <agm-polyline [strokeColor]="'#2196f3'">
@@ -43,8 +45,10 @@
 <div *ngIf="flightSelected">
   <agm-map [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [zoom]="7" [rotateControl]="true">
     <agm-marker [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [iconUrl]=iconUrl
-                [title]=selectedFlight[0][1]></agm-marker>
-    <agm-polyline [strokeColor]="'#2196f3'">
+                [title]=selectedFlight[0][1]>
+
+    </agm-marker>
+    <agm-polyline [strokeColor]="'#2196f3'" [geodesic]="true">
       <agm-polyline-point *ngFor="let point of polyLinePoints" [latitude]="point.lat" [longitude]="point.lon"></agm-polyline-point>
     </agm-polyline>
   </agm-map>
@@ -97,3 +101,4 @@
     </tbody>
   </table>
 </div>
+<ng4-loading-spinner [threshold]="100" [template]="template" [loadingText]="'Requesting Flight Data...'" [zIndex]="9999"></ng4-loading-spinner>

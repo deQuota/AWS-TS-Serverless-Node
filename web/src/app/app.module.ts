@@ -16,6 +16,9 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { AgmCoreModule} from "@agm/core";
 
 
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,8 @@ import { AgmCoreModule} from "@agm/core";
     InlineEditorModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBsEKEciQmGRaFdGqELGAgudgT-c_0iPGQ'
-    })
+    }),
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [
     ClientService,
