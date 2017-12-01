@@ -45,6 +45,7 @@ export class FlightSearchComponent implements OnInit {
   allCount: number;
   selectedFlight: any;
   flightSelected = false;
+  iconUrl;
 
   ngOnInit() {
 
@@ -76,10 +77,22 @@ export class FlightSearchComponent implements OnInit {
         response => {
           this.flightSelected = true;
           this.selectedFlight = response.message;
+          if(this.selectedFlight[0][10]>0 && this.selectedFlight[0][10]<91){
+            this.iconUrl = 'assets/icons/flight045.png';
+          }
+          else if(this.selectedFlight[0][10]>90 && this.selectedFlight[0][10]<181){
+            this.iconUrl = 'assets/icons/flight135.png';
+          }
+          else if(this.selectedFlight[0][10]>180 && this.selectedFlight[0][10]<271){
+            this.iconUrl = 'assets/icons/flight225.png';
+          }
+          else{
+            this.iconUrl = 'assets/icons/flight315.png';
+          }
           console.log('Flight Selected >>' + this.selectedFlight[0][0]);
         }
       );
-    }, 1000)
+    }, 9000)
 
 
   }
