@@ -46,6 +46,7 @@ export class FlightSearchComponent implements OnInit {
   selectedFlight: any;
   flightSelected = false;
   iconUrl;
+  polyLinePoints:any = [];
 
   ngOnInit() {
 
@@ -72,29 +73,38 @@ export class FlightSearchComponent implements OnInit {
   }
 
   onClickFlightSelected(icao: string) {
+    this.getFlightOnce(icao);
+    let j=1;
     setInterval(() => {
-      this.flightService.getSelectedFlight(icao).subscribe(
-        response => {
-          this.flightSelected = true;
-          this.selectedFlight = response.message;
-          if(this.selectedFlight[0][10]>0 && this.selectedFlight[0][10]<91){
-            this.iconUrl = 'assets/icons/flight045.png';
-          }
-          else if(this.selectedFlight[0][10]>90 && this.selectedFlight[0][10]<181){
-            this.iconUrl = 'assets/icons/flight135.png';
-          }
-          else if(this.selectedFlight[0][10]>180 && this.selectedFlight[0][10]<271){
-            this.iconUrl = 'assets/icons/flight225.png';
-          }
-          else{
-            this.iconUrl = 'assets/icons/flight315.png';
-          }
-          console.log('Flight Selected >>' + this.selectedFlight[0][0]);
+      this.getFlightOnce(icao);
+      this.polyLinePoints[j] = { lat:this.selectedFlight[0][6], lon:this.selectedFlight[0][5]};
+      j++;
+    }, 7000)
+
+
+  }
+  getFlightOnce(icao: string){
+
+    this.flightService.getSelectedFlight(icao).subscribe(
+      response => {
+        this.flightSelected = true;
+        this.selectedFlight = response.message;
+        this.polyLinePoints[0] = { lat:this.selectedFlight[0][6], lon:this.selectedFlight[0][5]};
+        if(this.selectedFlight[0][10]>0 && this.selectedFlight[0][10]<91){
+          this.iconUrl = 'assets/icons/flight045.png';
         }
-      );
-    }, 9000)
-
-
+        else if(this.selectedFlight[0][10]>90 && this.selectedFlight[0][10]<181){
+          this.iconUrl = 'assets/icons/flight135.png';
+        }
+        else if(this.selectedFlight[0][10]>180 && this.selectedFlight[0][10]<271){
+          this.iconUrl = 'assets/icons/flight225.png';
+        }
+        else{
+          this.iconUrl = 'assets/icons/flight315.png';
+        }
+        console.log('Flight Selected >>' + this.selectedFlight[0][0]);
+      }
+    );
   }
 
 }

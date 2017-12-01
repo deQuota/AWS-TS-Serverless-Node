@@ -20,30 +20,80 @@
 -->
 
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select a Flight
     <span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li *ngFor="let flight of allFlights"><a (click)="onClickFlightSelected(flight[0])"> {{flight[1]}} Country: {{flight[2]}}</a></li>
+    <li *ngFor="let flight of allFlights"><a (click)="onClickFlightSelected(flight[0])"> {{flight[1]}} Country:
+      {{flight[2]}}</a></li>
   </ul>
 </div>
 
 <div *ngIf="!flightSelected">
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="4">
-  <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]
-              [iconUrl]="(flight[10]>0 && flight[10]<91) ? 'assets/icons/flight045.png': (flight[10]>90 && flight[10]<181)? 'assets/icons/flight135.png':(flight[10]>180 && flight[10]<270)? 'assets/icons/flight225.png':'assets/icons/flight315.png'"
-  [title]="flight[1]" [openInfoWindow]="true">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="4">
+    <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]
+                [iconUrl]="(flight[10]>0 && flight[10]<91) ? 'assets/icons/flight045.png': (flight[10]>90 && flight[10]<181)? 'assets/icons/flight135.png':(flight[10]>180 && flight[10]<270)? 'assets/icons/flight225.png':'assets/icons/flight315.png'"
+                [title]="(flight[1]).concat('\n').concat(flight[2])">
 
-  </agm-marker>
-  <agm-polyline [strokeColor]="'#2196f3'">
-   <!-- <agm-polyline-point *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-polyline-point>-->
-  </agm-polyline>
-</agm-map>
+    </agm-marker>
+    <agm-polyline [strokeColor]="'#2196f3'">
+      <!-- <agm-polyline-point *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-polyline-point>-->
+    </agm-polyline>
+  </agm-map>
 </div>
 <div *ngIf="flightSelected">
   <agm-map [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [zoom]="7" [rotateControl]="true">
-    <agm-marker  [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [iconUrl]=iconUrl [title]=selectedFlight[0][1]></agm-marker>
+    <agm-marker [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [iconUrl]=iconUrl
+                [title]=selectedFlight[0][1]></agm-marker>
     <agm-polyline [strokeColor]="'#2196f3'">
-       <agm-polyline-point  [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5]></agm-polyline-point>
+      <agm-polyline-point *ngFor="let point of polyLinePoints" [latitude]="point.lat" [longitude]="point.lon"></agm-polyline-point>
     </agm-polyline>
   </agm-map>
+</div>
+<div *ngIf="flightSelected">
+  <table class="table table-bordered table-dark">
+    <thead>
+    <tr>
+
+      <th scope="col">icao24</th>
+      <th scope="col">Callsign</th>
+      <th scope="col">Origin Country</th>
+      <th scope="col">Time Position</th>
+      <th scope="col">Last Contact</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Geo-Altitude</th>
+      <th scope="col">On Ground</th>
+      <th scope="col">Velocity</th>
+      <th scope="col">Heading</th>
+      <th scope="col">Vertical Rate</th>
+      <th scope="col">Sensors</th>
+      <th scope="col">Baro-Altitude</th>
+      <th scope="col">Squawk</th>
+      <th scope="col">Source</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+      <th scope="row">{{selectedFlight[0][0]}}</th>
+      <td>{{selectedFlight[0][1]}}</td>
+      <td>{{selectedFlight[0][2]}}</td>
+      <td>{{selectedFlight[0][3]}}</td>
+      <td>{{selectedFlight[0][4]}}</td>
+      <td>{{selectedFlight[0][5]}}</td>
+      <td>{{selectedFlight[0][6]}}</td>
+      <td>{{selectedFlight[0][7]}}</td>
+      <td>{{selectedFlight[0][8]}}</td>
+      <td class="bg-success">{{selectedFlight[0][9]}}</td>
+      <td>{{selectedFlight[0][10]}}</td>
+      <td>{{selectedFlight[0][11]}}</td>
+      <td>{{selectedFlight[0][12]}}</td>
+      <td>{{selectedFlight[0][13]}}</td>
+      <td>{{selectedFlight[0][14]}}</td>
+      <td>{{selectedFlight[0][16]}}</td>
+    </tr>
+
+    </tbody>
+  </table>
 </div>
