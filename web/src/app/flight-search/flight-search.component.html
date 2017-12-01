@@ -23,14 +23,23 @@
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
     <span class="caret"></span></button>
   <ul class="dropdown-menu">
-    <li *ngFor="let flight of allFlights"><a href="#"> {{flight[1]}} Country: {{flight[2]}}</a></li>
+    <li *ngFor="let flight of allFlights"><a (click)="onClickFlightSelected(flight[0])"> {{flight[1]}} Country: {{flight[2]}}</a></li>
   </ul>
 </div>
 
-
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="2">
+<div *ngIf="!flightSelected">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="4">
   <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-marker>
   <agm-polyline [strokeColor]="'#2196f3'">
    <!-- <agm-polyline-point *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-polyline-point>-->
   </agm-polyline>
 </agm-map>
+</div>
+<div *ngIf="flightSelected">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="7">
+    <agm-marker  [latitude]="selectedFlight[0][6]" [longitude]=selectedFlight[0][5]></agm-marker>
+    <agm-polyline [strokeColor]="'#2196f3'">
+      <!-- <agm-polyline-point *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-polyline-point>-->
+    </agm-polyline>
+  </agm-map>
+</div>

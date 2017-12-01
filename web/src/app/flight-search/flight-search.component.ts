@@ -12,10 +12,10 @@ export class FlightSearchComponent implements OnInit {
   }
 
   title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  lat: number = -28.678418;
+  lng: number = 153.809007;
 
-  markers:any = [
+  markers: any = [
     {
       lat: 51.673858,
       lng: 7.815982,
@@ -33,7 +33,7 @@ export class FlightSearchComponent implements OnInit {
       lng: 7.105982,
       label: 'C',
       draggable: true
-    },{
+    }, {
       lat: 51.673858,
       lng: 7.815982,
       label: 'X',
@@ -43,27 +43,44 @@ export class FlightSearchComponent implements OnInit {
 
   allFlights: any;
   allCount: number;
+  selectedFlight: any;
+  flightSelected = false;
 
   ngOnInit() {
 
+    this.onInitGetAll();
 
-
-      setInterval(() => {
-        this.flightService.getAllFlights().subscribe(
-          response => {
-            this.allFlights = response.message;
-            this.allCount = response.count;
-            console.log('Count', response.count);
-            console.log(this.allFlights);
-          }
-        );
-      }, 10000);
-
+    setInterval(() => {
+      this.onInitGetAll();
+    }, 10000);
 
 
   }
 
-  onClickFlightSelected(icao: string){
+  onInitGetAll() {
+    if (!this.flightSelected) {
+      this.flightService.getAllFlights().subscribe(
+        response => {
+          this.allFlights = response.message;
+          this.allCount = response.count;
+          console.log('Count', response.count);
+          console.log(this.allFlights);
+        }
+      );
+    }
+  }
+
+  onClickFlightSelected(icao: string) {
+    setInterval(() => {
+      this.flightService.getSelectedFlight(icao).subscribe(
+        response => {
+          this.flightSelected = true;
+          this.selectedFlight = response.message;
+          console.log('Flight Selected >>' + this.selectedFlight[0][0]);
+        }
+      );
+    }, 1000)
+
 
   }
 

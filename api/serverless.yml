@@ -38,6 +38,13 @@ functions:
           method: get
           path: flights
 
+  selectedFlight:
+    handler: flights/handler.selectedFlight
+    events:
+      - http:
+          method: get
+          path: flights/{icao}
+
 
 resources:
   Resources:

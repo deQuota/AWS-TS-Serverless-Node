@@ -58,34 +58,22 @@ export const flight = async (event, context, callback) => {
 
 export const selectedFlight = async (event, context, callback) => {
 
+    let { icao } =  event.pathParameters;
     const flights: Flight[] = [];
-
+    let msg: string[] = [];
 
     request({
-        url: url,
+        url: url+'?icao24='+icao,
         json: true
     }, (error, response, body) => {
 
         if (!error && response.statusCode === 200) {
 
-            let j = 0;
-            for (let i = 0; i < body.states.length; i++) {
-
-                if (body.states[i][5] < 154 && body.states[i][5] > 111) {
-                    if (body.states[i][6] < -9 && body.states[i][6] > -39) {
-
-                        msg[j] = body.states[i];
-                        j++;
-                    }
-                }
-            }
-
             const responseSuccess = {
                 headers: {'Access-Control-Allow-Origin': '*' },
                 statusCode: 200,
                 body: JSON.stringify({
-                    count: j + 1,
-                    message: msg
+                    message: body.states
 
                 }),
             };
