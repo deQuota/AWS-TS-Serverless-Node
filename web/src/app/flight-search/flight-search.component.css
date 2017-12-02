@@ -1,3 +1,6 @@
 agm-map {
   height: 500px;
 }
+.marker{
+  transform:rotate(70deg);
+}

@@ -14,9 +14,11 @@ import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 
 import { AgmCoreModule} from "@agm/core";
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+/*import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';*/
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBsEKEciQmGRaFdGqELGAgudgT-c_0iPGQ'
     }),
-    Ng4LoadingSpinnerModule.forRoot()
+    AgmSnazzyInfoWindowModule,
+    /*Ng4LoadingSpinnerModule.forRoot()*/
   ],
   providers: [
     ClientService,
