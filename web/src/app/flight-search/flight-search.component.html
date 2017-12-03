@@ -27,6 +27,7 @@
       {{flight[2]}}</a></li>
   </ul>
 </div>
+<button  *ngIf="flightSelected" class="btn btn-danger" (click)="onCilckBackToWM()">Back to World Map</button>
 
 <div *ngIf="!flightSelected">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2">
@@ -43,13 +44,13 @@
   </agm-map>
 </div>
 <div *ngIf="flightSelected">
-  <agm-map [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [zoom]="9" [rotateControl]="true">
+  <agm-map [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [zoom]="10" [rotateControl]="true">
 
     <agm-marker [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [iconUrl]=iconUrl
                 [title]=selectedFlight[0][1]>
       <agm-snazzy-info-window [padding]="20" [maxWidth]="700" [maxHeight]="400" [closeWhenOthersOpen]="true">
         <ng-template>
-        <h2>The flight </h2>
+        <h2>Flight {{selectedFlight[0][1]}}</h2>
         </ng-template>
       </agm-snazzy-info-window>
     </agm-marker>
