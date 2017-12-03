@@ -14,7 +14,8 @@ export class FlightSearchComponent implements OnInit {
   flightSelected = false;
   iconUrl;
   polyLinePoints:any = [];
-  template: string =`<img src="http://pa1.narvii.com/5722/2c617cd9674417d272084884b61e4bb7dd5f0b15_hq.gif" />`
+  template: string =`<img src="http://pa1.narvii.com/5722/2c617cd9674417d272084884b61e4bb7dd5f0b15_hq.gif" />`;
+  j=0;
 
   constructor(private flightService: FlightsService) {
 
@@ -47,11 +48,9 @@ export class FlightSearchComponent implements OnInit {
   onClickFlightSelected(icao: string) {
     /*this.spinnerService.show();*/
     this.getFlightOnce(icao);
-    let j=0;
+
     setInterval(() => {
       this.getFlightOnce(icao);
-      this.polyLinePoints[j] = { lat:this.selectedFlight[0][6], lon:this.selectedFlight[0][5]};
-      j++;
     }, 7000)
 
 
@@ -60,11 +59,14 @@ export class FlightSearchComponent implements OnInit {
 
 
     this.flightService.getSelectedFlight(icao).subscribe(
+
       response => {
         this.flightSelected = true;
         this.selectedFlight = response.message;
        /* this.spinnerService.hide();*/
         /*this.polyLinePoints[0] = { lat:this.selectedFlight[0][6], lon:this.selectedFlight[0][5]};*/
+        this.polyLinePoints[this.j] = { lat:this.selectedFlight[0][6], lon:this.selectedFlight[0][5]};
+        this.j++;
         if(this.selectedFlight[0][10]>0 && this.selectedFlight[0][10]<91){
           this.iconUrl = 'assets/icons/flight045.png';
         }
