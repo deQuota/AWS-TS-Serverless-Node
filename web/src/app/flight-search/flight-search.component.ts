@@ -82,6 +82,9 @@ export class FlightSearchComponent implements OnInit {
           this.iconUrl = 'assets/icons/flight315.png';
         }
         console.log('Flight Selected >>' + this.selectedFlight[0][0]);
+      },
+      error =>{
+        
       }
     );
   }
