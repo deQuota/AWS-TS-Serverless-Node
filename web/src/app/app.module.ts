@@ -15,6 +15,7 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 
 import { AgmCoreModule} from "@agm/core";
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { LoadingModule } from 'ngx-loading';
 
 
 /*import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';*/
@@ -39,6 +40,9 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
     }),
     AgmSnazzyInfoWindowModule,
     /*Ng4LoadingSpinnerModule.forRoot()*/
+    LoadingModule
+
+
   ],
   providers: [
     ClientService,

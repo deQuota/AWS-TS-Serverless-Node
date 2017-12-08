@@ -31,12 +31,19 @@ functions:
           method: get
           path: clients/{clientId}
 
-  flights:
-    handler: flights/handler.flight
+  allFlights:
+    handler: flights/handler.getAllFlights
     events:
       - http:
           method: get
           path: flights
+
+  geoFlights:
+    handler: flights/handler.geoFilteredFlight
+    events:
+      - http:
+          method: get
+          path: geofilteredflights
 
   selectedFlight:
     handler: flights/handler.selectedFlight

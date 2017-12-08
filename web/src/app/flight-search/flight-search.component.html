@@ -1,4 +1,4 @@
-<h2>There are <span style="color: green">{{allCount}}</span> flights above Australia</h2>
+<!--<h2>There are <span style="color: green">{{allCount}}</span> flights above Australia</h2>-->
 <!--
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">Select Flight</button>
@@ -19,23 +19,35 @@
 </div>
 -->
 
-<div class="dropdown">
+<!--<div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select a Flight
     <span class="caret"></span></button>
   <ul class="dropdown-menu">
     <li *ngFor="let flight of allFlights"><a (click)="onClickFlightSelected(flight[0])"> {{flight[1]}} Country:
       {{flight[2]}}</a></li>
   </ul>
-</div>
-<button  *ngIf="flightSelected" class="btn btn-danger" (click)="onCilckBackToWM()">Back to World Map</button>
+</div>-->
+<button *ngIf="flightSelected" class="btn btn-danger" (click)="onCilckBackToWM()">Back to World Map</button>
+<div class="row">
+  <div class="col col-lg-6">
 
+    <h2 *ngIf="selectedFlightAdvanced?.airCraftModelAvailable">Aircraft Model
+      {{selectedFlightAdvanced.airCraftModel}}</h2>
+    <h2 *ngIf="selectedFlightAdvanced?.fromAvailable">From {{selectedFlightAdvanced.from}}</h2>
+    <h2 *ngIf="selectedFlightAdvanced?.toAvailable">To {{selectedFlightAdvanced.to}}</h2>
+  </div>
+  <div class="col col-lg-6">
+    <img src="{{selectedFlightAdvanced?.imageURL}}" alt="{{imageAlt}}">
+  </div>
+</div>
 <div *ngIf="!flightSelected">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="3" [minZoom]="3">
     <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]
                 [iconUrl]="(flight[10]>0 && flight[10]<91) ? 'assets/icons/flight045.png': (flight[10]>90 && flight[10]<181)? 'assets/icons/flight135.png':(flight[10]>180 && flight[10]<270)? 'assets/icons/flight225.png':'assets/icons/flight315.png'"
                 [title]="(flight[1]).concat('\n').concat(flight[2])"
                 [markerClickable]="true" (markerClick)="onClickFlightSelected(flight[0])"
-      >
+    >
 
     </agm-marker>
     <agm-polyline [strokeColor]="'#2196f3'">
@@ -50,13 +62,14 @@
                 [title]=selectedFlight[0][1]>
       <agm-snazzy-info-window [padding]="20" [maxWidth]="700" [maxHeight]="400" [closeWhenOthersOpen]="true">
         <ng-template>
-        <h2>Flight {{selectedFlight[0][1]}}</h2>
+          <h2>Flight {{selectedFlight[0][1]}}</h2>
         </ng-template>
       </agm-snazzy-info-window>
     </agm-marker>
 
     <agm-polyline [strokeColor]="'#0CBF12'">
-      <agm-polyline-point *ngFor="let point of polyLinePoints" [latitude]="point.lat" [longitude]="point.lon"></agm-polyline-point>
+      <agm-polyline-point *ngFor="let point of polyLinePoints" [latitude]="point.lat"
+                          [longitude]="point.lon"></agm-polyline-point>
     </agm-polyline>
   </agm-map>
 </div>

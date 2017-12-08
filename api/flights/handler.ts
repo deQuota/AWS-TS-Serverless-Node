@@ -3,7 +3,48 @@ import {Flight} from "./flight";
 let msg: string[] = [];
 let request = require("request");
 let url = "https://opensky-network.org/api/states/all";
-export const flight = async (event, context, callback) => {
+
+export const getAllFlights = async (event, context, callback) => {
+    request({
+        url: url,
+        json: true
+    }, (error, response, body) => {
+
+        if (!error && response.statusCode === 200) {
+
+            let j = 0;
+
+            msg = body.states;
+
+
+            const responseSuccess = {
+                headers: {'Access-Control-Allow-Origin': '*'},
+                statusCode: 200,
+                body: JSON.stringify({
+                    count: j + 1,
+                    message: msg
+
+                }),
+            };
+            callback(null, responseSuccess);
+        }
+        else {
+            const responseError = {
+                headers: {'Access-Control-Allow-Origin': '*'},
+                statusCode: 200,
+                body: JSON.stringify({
+                    message: 'Error occurred while calling the third party API'
+
+                }),
+            };
+            callback(null, responseError);
+        }
+
+
+    });
+
+};
+export const geoFilteredFlight = async (event, context, callback) => {
 
     const flights: Flight[] = [];
 
@@ -28,7 +69,7 @@ export const flight = async (event, context, callback) => {
             }
 
             const responseSuccess = {
-                headers: {'Access-Control-Allow-Origin': '*' },
+                headers: {'Access-Control-Allow-Origin': '*'},
                 statusCode: 200,
                 body: JSON.stringify({
                     count: j + 1,
@@ -40,7 +81,7 @@ export const flight = async (event, context, callback) => {
         }
         else {
             const responseError = {
-                headers: {'Access-Control-Allow-Origin': '*' },
+                headers: {'Access-Control-Allow-Origin': '*'},
                 statusCode: 200,
                 body: JSON.stringify({
                     message: 'Error occurred while calling the third party API'
@@ -58,19 +99,19 @@ export const flight = async (event, context, callback) => {
 
 export const selectedFlight = async (event, context, callback) => {
 
-    let { icao } =  event.pathParameters;
+    let {icao} = event.pathParameters;
     const flights: Flight[] = [];
     let msg: string[] = [];
 
     request({
-        url: url+'?icao24='+icao,
+        url: url + '?icao24=' + icao,
         json: true
     }, (error, response, body) => {
 
         if (!error && response.statusCode === 200) {
 
             const responseSuccess = {
-                headers: {'Access-Control-Allow-Origin': '*' },
+                headers: {'Access-Control-Allow-Origin': '*'},
                 statusCode: 200,
                 body: JSON.stringify({
                     message: body.states
@@ -81,7 +122,7 @@ export const selectedFlight = async (event, context, callback) => {
         }
         else {
             const responseError = {
-                headers: {'Access-Control-Allow-Origin': '*' },
+                headers: {'Access-Control-Allow-Origin': '*'},
                 statusCode: 200,
                 body: JSON.stringify({
                     message: 'Error occurred while calling the third party API'
