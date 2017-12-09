@@ -110,13 +110,13 @@ export class FlightSearchComponent implements OnInit {
     location.reload();
   }
 
-  getAdditionalData(icao: string){
+  getAdditionalData(icao: string) {
     console.log('Called >', icao);
     this.flightService.getAdditionalData(icao).subscribe(
       data => {
         let acList: any = {};
-        if (data.hasOwnProperty('acList', 'acList')&& data.acList.length != 0) {
-          console.log('Array',data.acList);
+        if (data.hasOwnProperty('acList', 'acList') && data.acList.length != 0) {
+          console.log('Array', data.acList);
           acList = data.acList[0];
           if (acList.hasOwnProperty('Mdl', 'Mdl')) {
             this.selectedFlightAdvanced.airCraftModel = acList.Mdl;
@@ -125,10 +125,17 @@ export class FlightSearchComponent implements OnInit {
           if (acList.hasOwnProperty('From', 'From')) {
             this.selectedFlightAdvanced.from = acList.From;
             this.selectedFlightAdvanced.fromAvailable = true;
+            this.selectedFlightAdvanced.fromAirportCode = this.selectedFlightAdvanced.from.split(' ', 1)[0];
+            console.log('From Airport Code', this.selectedFlightAdvanced.fromAirportCode);
+            this.getAirpotDetails(this.selectedFlightAdvanced.fromAirportCode);
+
           }
           if (acList.hasOwnProperty('To', 'To')) {
             this.selectedFlightAdvanced.to = acList.To;
             this.selectedFlightAdvanced.toAvailable = true;
+            this.selectedFlightAdvanced.toAirportCode = this.selectedFlightAdvanced.to.split(' ', 1)[0];
+            console.log('To Airport Code', this.selectedFlightAdvanced.toAirportCode);
+            this.getAirpotDetails(this.selectedFlightAdvanced.toAirportCode);
           }
           /*    this.selectedFlightAdvanced.airCraftModel = data.acList[0].Mdl;
               this.selectedFlightAdvanced.from = data.acList[0].From;
@@ -141,23 +148,38 @@ export class FlightSearchComponent implements OnInit {
     );
   }
 
-  getImage(icao :string){
+  getImage(icao: string) {
     this.flightService.getAircraftImages(icao).subscribe(
-      response =>{
-        console.log('Images JSON >>',response);
-        if(response.hasOwnProperty('data','data')){
-        this.selectedFlightAdvanced.imageURL = response.data[0].image;
-        this.selectedFlightAdvanced.imageURL = this.selectedFlightAdvanced.imageURL.replace('thumbnails', 'small');
-        console.log(this.selectedFlightAdvanced.imageURL);
+      response => {
+        console.log('Images JSON >>', response);
+        if (response.hasOwnProperty('data', 'data')) {
+          this.selectedFlightAdvanced.imageURL = response.data[0].image;
+          this.selectedFlightAdvanced.imageURL = this.selectedFlightAdvanced.imageURL.replace('thumbnails', 'small');
+          console.log(this.selectedFlightAdvanced.imageURL);
         }
         else {
           this.imageAlt = response.error;
         }
       },
-      error =>{
-          this.imageAlt = error;
+      error => {
+        this.imageAlt = error;
       }
     )
+  }
+
+   getAirpotDetails(icao: string) {
+    this.flightService.getAirpotDetails(icao).subscribe(
+      response => {
+        console.log('Airport Data', response);
+        if(response.hasOwnProperty('name','name')){
+          console.log('Airport Data Received');
+          return true;
+        }
+        else{
+          return false;
+        }
+      }
+    );
   }
 
 }

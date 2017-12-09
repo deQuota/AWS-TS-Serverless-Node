@@ -3,8 +3,10 @@ export class AdvancedFlightModel {
   airCraftModel: string;
   airCraftModelAvailable: boolean;
   from: string;
+  fromAirportCode: string;
   fromAvailable: boolean;
   to: string;
+  toAirportCode: string;
   toAvailable: boolean;
   imageURL : string;
 

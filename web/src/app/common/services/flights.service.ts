@@ -31,4 +31,8 @@ export class FlightsService {
   getAircraftImages(icao: string){
     return this.http.get<any>('https://cors-anywhere.herokuapp.com/http://www.airport-data.com/api/ac_thumb.json?m='+icao); // should be directly, CORS
   }
+
+  getAirpotDetails(icao: string){
+    return this.http.get<any>('https://cors-anywhere.herokuapp.com/http://www.airport-data.com/api/ap_info.json?icao='+icao);
+  }
 }
