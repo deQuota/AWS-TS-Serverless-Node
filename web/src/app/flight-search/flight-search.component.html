@@ -31,18 +31,15 @@
 <div class="row">
   <div class="col col-lg-6">
 
-    <h2 *ngIf="selectedFlightAdvanced?.airCraftModelAvailable">Aircraft Model
-      {{selectedFlightAdvanced.airCraftModel}}</h2>
-    <h2 *ngIf="selectedFlightAdvanced?.fromAvailable">From {{selectedFlightAdvanced.from}}</h2>
-    <h2 *ngIf="selectedFlightAdvanced?.toAvailable">To {{selectedFlightAdvanced.to}}</h2>
+
   </div>
   <div class="col col-lg-6">
-    <img src="{{selectedFlightAdvanced?.imageURL}}" alt="{{imageAlt}}">
+
   </div>
 </div>
-<div *ngIf="!flightSelected">
+<div class="col col-lg-12" *ngIf="!flightSelected">
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="3" [minZoom]="3">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2" [minZoom]="2">
     <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]
                 [iconUrl]="(flight[10]>0 && flight[10]<91) ? 'assets/icons/flight045.png': (flight[10]>90 && flight[10]<181)? 'assets/icons/flight135.png':(flight[10]>180 && flight[10]<270)? 'assets/icons/flight225.png':'assets/icons/flight315.png'"
                 [title]="(flight[1]).concat('\n').concat(flight[2])"
@@ -55,23 +52,38 @@
     </agm-polyline>
   </agm-map>
 </div>
-<div *ngIf="flightSelected">
-  <agm-map [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [zoom]="11" [rotateControl]="true">
+<div class="col col-lg-12" *ngIf="flightSelected">
+  <div class="row">
+    <div class="col col-lg-8">
+      <agm-map [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [zoom]="11" [rotateControl]="true">
 
-    <agm-marker [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [iconUrl]=iconUrl
-                [title]=selectedFlight[0][1]>
-      <agm-snazzy-info-window [padding]="20" [maxWidth]="700" [maxHeight]="400" [closeWhenOthersOpen]="true">
-        <ng-template>
-          <h2>Flight {{selectedFlight[0][1]}}</h2>
-        </ng-template>
-      </agm-snazzy-info-window>
-    </agm-marker>
+        <agm-marker [latitude]=selectedFlight[0][6] [longitude]=selectedFlight[0][5] [iconUrl]=iconUrl
+                    [title]=selectedFlight[0][1]>
+          <agm-snazzy-info-window [padding]="20" [maxWidth]="700" [maxHeight]="400" [closeWhenOthersOpen]="true">
+            <ng-template>
+              <h2>Flight {{selectedFlight[0][1]}}</h2>
+            </ng-template>
+          </agm-snazzy-info-window>
+        </agm-marker>
 
-    <agm-polyline [strokeColor]="'#0CBF12'">
-      <agm-polyline-point *ngFor="let point of polyLinePoints" [latitude]="point.lat"
-                          [longitude]="point.lon"></agm-polyline-point>
-    </agm-polyline>
-  </agm-map>
+        <agm-polyline [strokeColor]="'#0CBF12'">
+          <agm-polyline-point *ngFor="let point of polyLinePoints" [latitude]="point.lat"
+                              [longitude]="point.lon"></agm-polyline-point>
+        </agm-polyline>
+      </agm-map>
+    </div>
+    <div class="col col-lg-4">
+      <div class="row">
+        <h3 *ngIf="selectedFlightAdvanced?.airCraftModelAvailable">Aircraft Model
+          <b>{{selectedFlightAdvanced.airCraftModel}}</b></h3>
+        <h3 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b></h3>
+        <h3 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b></h3>
+      </div>
+      <div class="row">
+        <img src="{{selectedFlightAdvanced?.imageURL}}" class="thumbnail" alt="{{imageAlt}}">
+      </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="flightSelected">
