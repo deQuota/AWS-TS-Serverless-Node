@@ -5,9 +5,11 @@ export class AdvancedFlightModel {
   from: string;
   fromAirportCode: string;
   fromAvailable: boolean;
+  fromAirportCoordinates: number[];
   to: string;
   toAirportCode: string;
   toAvailable: boolean;
+  toAirportCoordinates: number[];
   imageURL : string;
 
   constructor(airCraftModelAvailable: boolean, fromAvailable: boolean, toAvailable: boolean) {
