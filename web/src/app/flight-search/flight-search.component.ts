@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FlightsService} from '../common/services/flights.service';
 import {AdvancedFlightModel} from "../common/models/advanced-flight.model";
+import { AirportModel } from "../common/models/airport.model";
 
 /*import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';*/
 
@@ -16,6 +17,8 @@ export class FlightSearchComponent implements OnInit {
   allCount: number;
   selectedFlight: any;
   selectedFlightAdvanced: AdvancedFlightModel = new AdvancedFlightModel(false, false, false);
+  fromAiport: AirportModel = new AirportModel();
+  toAirport: AirportModel = new AirportModel();
   flightSelected = false;
   iconUrl;
   polyLinePoints: any = [];
@@ -25,6 +28,8 @@ export class FlightSearchComponent implements OnInit {
 
   constructor(private flightService: FlightsService) {
     this.selectedFlightAdvanced.airCraftModel = null;
+    this.selectedFlightAdvanced.airLine = null;
+    this.selectedFlightAdvanced.airLineInfoAvailable = false;
     this.selectedFlightAdvanced.to = null;
     this.selectedFlightAdvanced.from = null;
     this.selectedFlightAdvanced.airCraftModelAvailable = false;
@@ -41,7 +46,7 @@ export class FlightSearchComponent implements OnInit {
 
     setInterval(() => {
       this.onInitGetAll();
-    }, 20000);
+    }, 60000);
 
 
   }
@@ -121,6 +126,10 @@ export class FlightSearchComponent implements OnInit {
         if (data.hasOwnProperty('acList', 'acList') && data.acList.length != 0) {
           console.log('Array', data.acList);
           acList = data.acList[0];
+          if(acList.hasOwnProperty('Op','Op')){
+            this.selectedFlightAdvanced.airLine = acList.Op;
+            this.selectedFlightAdvanced.airLineInfoAvailable = true;
+          }
           if (acList.hasOwnProperty('Mdl', 'Mdl')) {
             this.selectedFlightAdvanced.airCraftModel = acList.Mdl;
             this.selectedFlightAdvanced.airCraftModelAvailable = true;
@@ -179,6 +188,7 @@ export class FlightSearchComponent implements OnInit {
           console.log('From Airport Data Received',response);
           this.selectedFlightAdvanced.fromAirportCoordinates[0] = Number(response.longitude);
           this.selectedFlightAdvanced.fromAirportCoordinates[1] = Number(response.latitude);
+          this.fromAiport.name = response.name;
           console.log(this.selectedFlightAdvanced.fromAirportCoordinates);
 
 
@@ -197,6 +207,7 @@ export class FlightSearchComponent implements OnInit {
           console.log('To Airport Data Received', response);
           this.selectedFlightAdvanced.toAirportCoordinates[0] = Number(response.longitude);
           this.selectedFlightAdvanced.toAirportCoordinates[1] = Number(response.latitude);
+          this.toAirport.name = response.name;
           console.log(this.selectedFlightAdvanced.toAirportCoordinates);
 
 

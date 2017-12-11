@@ -71,11 +71,13 @@
                               [longitude]="point.lon"></agm-polyline-point>
         </agm-polyline>
         <agm-marker *ngIf="selectedFlightAdvanced.fromAvailable && selectedFlightAdvanced.toAvailable"
+                    [label]="fromAiport?.name"
                     [latitude]="selectedFlightAdvanced.fromAirportCoordinates[1]"
                     [longitude]="selectedFlightAdvanced.fromAirportCoordinates[0]"
         >
         </agm-marker>
         <agm-marker *ngIf="selectedFlightAdvanced.fromAvailable && selectedFlightAdvanced.toAvailable"
+                    [label]="toAirport?.name"
                     [latitude]="selectedFlightAdvanced.toAirportCoordinates[1]"
                     [longitude]="selectedFlightAdvanced.toAirportCoordinates[0]">
         </agm-marker>
@@ -89,7 +91,7 @@
 
           </agm-polyline-point>
         </agm-polyline>
-        <agm-polyline *ngIf="selectedFlightAdvanced.toAvailable">
+        <agm-polyline *ngIf="selectedFlightAdvanced.toAvailable" [strokeColor]="'#F40C0C'">
           <agm-polyline-point [latitude]="polyLinePoints[polyLinePoints.length-1]?.lat"
                               [longitude]="polyLinePoints[polyLinePoints.length-1]?.lon">
 
@@ -101,7 +103,7 @@
         </agm-polyline>
 
         <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable && selectedFlightAdvanced.toAvailable"
-                      [strokeColor]="'#0AAC12'" [strokeOpacity]="0.2">
+                      [strokeColor]="'#C109CE'" [strokeOpacity]="0.7">
           <agm-polyline-point [latitude]="selectedFlightAdvanced.fromAirportCoordinates[1]"
                               [longitude]="selectedFlightAdvanced.fromAirportCoordinates[0]">>
           </agm-polyline-point>
@@ -117,6 +119,7 @@
           <b>{{selectedFlightAdvanced.airCraftModel}}</b></h3>
         <h3 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b></h3>
         <h3 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b></h3>
+        <h4>Airline  <b>{{selectedFlightAdvanced?.airLine}}</b></h4>
       </div>
       <div class="row">
         <img src="{{selectedFlightAdvanced?.imageURL}}" class="thumbnail" alt="{{imageAlt}}">
