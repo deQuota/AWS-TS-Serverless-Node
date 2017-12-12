@@ -56,7 +56,7 @@ export class FlightSearchComponent implements OnInit {
       this.flightService.getAllFlights().subscribe(
         response => {
           this.allFlights = response.message;
-          this.allCount = response.count;
+          this.allCount = this.allFlights.length;
           console.log('Count', response.count);
           console.log(this.allFlights);
           this.loading = false

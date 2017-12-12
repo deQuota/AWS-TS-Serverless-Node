@@ -27,6 +27,7 @@
       {{flight[2]}}</a></li>
   </ul>
 </div>-->
+<div id="page-content" class="page-content">
 <button *ngIf="flightSelected" class="btn btn-danger" (click)="onCilckBackToWM()">Back to World Map</button>
 <div class="row">
   <div class="col col-lg-6">
@@ -51,6 +52,10 @@
       <!-- <agm-polyline-point *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]></agm-polyline-point>-->
     </agm-polyline>
   </agm-map>
+
+  <div class="text-center" *ngIf="!loading">
+    <h3>Tracking {{allCount}} flights approximately</h3>
+  </div>
 </div>
 <div class="col col-lg-12" *ngIf="flightSelected">
   <div class="row">
@@ -82,13 +87,11 @@
                     [longitude]="selectedFlightAdvanced.toAirportCoordinates[0]">
           <agm-snazzy-info-window [padding]="20" [maxWidth]="700" [maxHeight]="400" [closeWhenOthersOpen]="true">
             <ng-template>
-
-              <h1>asz</h1>
             </ng-template>
           </agm-snazzy-info-window>
         </agm-marker>
 
-        <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable">
+        <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable" [strokeOpacity]="0.5">
           <agm-polyline-point [latitude]="selectedFlightAdvanced.fromAirportCoordinates[1]"
                               [longitude]="selectedFlightAdvanced.fromAirportCoordinates[0]">
           </agm-polyline-point>
@@ -97,7 +100,7 @@
 
           </agm-polyline-point>
         </agm-polyline>
-        <agm-polyline *ngIf="selectedFlightAdvanced.toAvailable" [strokeColor]="'#F40C0C'">
+        <agm-polyline *ngIf="selectedFlightAdvanced.toAvailable" [strokeColor]="'#F40C0C'" [strokeOpacity]="0.5">
           <agm-polyline-point [latitude]="polyLinePoints[polyLinePoints.length-1]?.lat"
                               [longitude]="polyLinePoints[polyLinePoints.length-1]?.lon">
 
@@ -109,7 +112,7 @@
         </agm-polyline>
 
         <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable && selectedFlightAdvanced.toAvailable"
-                      [strokeColor]="'#C109CE'" [strokeOpacity]="0.7">
+                      [strokeColor]="'#C109CE'" [strokeOpacity]="0.5">
           <agm-polyline-point [latitude]="selectedFlightAdvanced.fromAirportCoordinates[1]"
                               [longitude]="selectedFlightAdvanced.fromAirportCoordinates[0]">>
           </agm-polyline-point>
@@ -119,7 +122,7 @@
         </agm-polyline>
       </agm-map>
     </div>
-    <div class="col col-lg-4">
+    <div id="right-column" class="col col-lg-4">
       <div class="row">
         <h3 *ngIf="selectedFlightAdvanced?.airCraftModelAvailable">Aircraft Model
           <b>{{selectedFlightAdvanced.airCraftModel}}</b></h3>
@@ -151,7 +154,7 @@
       <th scope="col">Velocity</th>
       <th scope="col">Heading</th>
       <th scope="col">Vertical Rate</th>
-      <th scope="col">Sensors</th>
+<!--      <th scope="col">Sensors</th>-->
       <th scope="col">Baro-Altitude</th>
       <th scope="col">Squawk</th>
       <!--<th scope="col">Source</th>-->
@@ -173,7 +176,7 @@
       <td class="bg-success">{{selectedFlight[0][9]}}</td>
       <td>{{selectedFlight[0][10]}}</td>
       <td>{{selectedFlight[0][11]}}</td>
-      <td>{{selectedFlight[0][12]}}</td>
+     <!-- <td>{{selectedFlight[0][12]}}</td>-->
       <td>{{selectedFlight[0][13]}}</td>
       <td>{{selectedFlight[0][14]}}</td>
       <!--<td>{{selectedFlight[0][16]}}</td>-->
@@ -191,3 +194,4 @@
 
 
 <!--<ng4-loading-spinner [threshold]="1" [template]="template" [loadingText]="'Requesting Flight Data...'" [zIndex]="9999"></ng4-loading-spinner>-->
+</div>
