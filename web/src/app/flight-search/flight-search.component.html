@@ -80,6 +80,12 @@
                     [label]="toAirport?.name"
                     [latitude]="selectedFlightAdvanced.toAirportCoordinates[1]"
                     [longitude]="selectedFlightAdvanced.toAirportCoordinates[0]">
+          <agm-snazzy-info-window [padding]="20" [maxWidth]="700" [maxHeight]="400" [closeWhenOthersOpen]="true">
+            <ng-template>
+
+              <h1>asz</h1>
+            </ng-template>
+          </agm-snazzy-info-window>
         </agm-marker>
 
         <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable">
@@ -119,7 +125,7 @@
           <b>{{selectedFlightAdvanced.airCraftModel}}</b></h3>
         <h3 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b></h3>
         <h3 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b></h3>
-        <h4>Airline  <b>{{selectedFlightAdvanced?.airLine}}</b></h4>
+        <h4 *ngIf="selectedFlightAdvanced?.airLineInfoAvailable">Airline <b>{{selectedFlightAdvanced?.airLine}}</b></h4>
       </div>
       <div class="row">
         <img src="{{selectedFlightAdvanced?.imageURL}}" class="thumbnail" alt="{{imageAlt}}">
@@ -175,5 +181,13 @@
 
     </tbody>
   </table>
+
 </div>
+<div class="text-center">
+  <div *ngIf="flightSelected" class="container">
+    <app-status-graphic [selectedFlight]="selectedFlight"></app-status-graphic>
+  </div>
+</div>
+
+
 <!--<ng4-loading-spinner [threshold]="1" [template]="template" [loadingText]="'Requesting Flight Data...'" [zIndex]="9999"></ng4-loading-spinner>-->

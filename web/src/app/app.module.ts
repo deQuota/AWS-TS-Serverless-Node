@@ -17,6 +17,9 @@ import { AgmCoreModule} from "@agm/core";
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { LoadingModule } from 'ngx-loading';
 
+import { NgxGaugeModule } from 'ngx-gauge';
+import { StatusGraphicComponent } from './status-graphic/status-graphic.component';
+
 
 /*import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';*/
 
@@ -26,7 +29,8 @@ import { LoadingModule } from 'ngx-loading';
   declarations: [
     AppComponent,
     HomeComponent,
-    FlightSearchComponent
+    FlightSearchComponent,
+    StatusGraphicComponent
 
 
   ],
@@ -40,7 +44,8 @@ import { LoadingModule } from 'ngx-loading';
     }),
     AgmSnazzyInfoWindowModule,
     /*Ng4LoadingSpinnerModule.forRoot()*/
-    LoadingModule
+    LoadingModule,
+    NgxGaugeModule
 
 
   ],

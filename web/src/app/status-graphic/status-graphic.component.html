@@ -1,0 +1,36 @@
+<div class="row">
+
+  <ngx-gauge [type]="speedGaugeType"
+             [value]="speedGaugeValue"
+             [label]="speedGaugeLabel"
+             [append]="speedGaugeAppendText"
+             [max]="speedGaugeMax"
+             [thick]="speedGaugeThickness"
+
+  >
+  </ngx-gauge>
+
+
+  <ngx-gauge [type]="headingGuageType"
+             [value]="headingGuageValue"
+             [label]="headingGuageLabel"
+             [append]="headingGuageAppendText"
+             [max]="headingGuageMax"
+             [thick]="headingGuageThickness"
+             [thresholds]="headingGuageThresholdConfig"
+
+
+  >
+  </ngx-gauge>
+
+  <ngx-gauge [type]="altitudeGaugeType"
+             [value]="altitudeGaugeValue"
+             [label]="altitudeGaugeLabel"
+             [append]="altitudeGaugeAppendText"
+             [max]="altitudeGaugeMax"
+             [thick]="altitudeGaugeThickness"
+             [thresholds]="altitudeGaugeThresholdConfig"
+
+  >
+  </ngx-gauge>
+</div>
