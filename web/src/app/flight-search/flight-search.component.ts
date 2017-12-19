@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FlightsService} from '../common/services/flights.service';
 import {AdvancedFlightModel} from "../common/models/advanced-flight.model";
-import { AirportModel } from "../common/models/airport.model";
+import {AirportModel} from "../common/models/airport.model";
 
 /*import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';*/
 
@@ -65,7 +65,7 @@ export class FlightSearchComponent implements OnInit {
     }
   }
 
-  onClickFlightSelected(icao: string,callsign: string) {
+  onClickFlightSelected(icao: string, callsign: string) {
     /*this.spinnerService.show();*/
     this.loading = true;
     this.getFlightOnce(icao);
@@ -87,7 +87,7 @@ export class FlightSearchComponent implements OnInit {
         this.flightSelected = true;
         this.selectedFlight = response.message;
         this.loading = true;
-       // this.getAdditionalData(this.selectedFlight[0][1]); // from callsign
+        // this.getAdditionalData(this.selectedFlight[0][1]); // from callsign
 
 
         /* this.spinnerService.hide();*/
@@ -126,7 +126,7 @@ export class FlightSearchComponent implements OnInit {
         if (data.hasOwnProperty('acList', 'acList') && data.acList.length != 0) {
           console.log('Array', data.acList);
           acList = data.acList[0];
-          if(acList.hasOwnProperty('Op','Op')){
+          if (acList.hasOwnProperty('Op', 'Op')) {
             this.selectedFlightAdvanced.airLine = acList.Op;
             this.selectedFlightAdvanced.airLineInfoAvailable = true;
           }
@@ -149,6 +149,11 @@ export class FlightSearchComponent implements OnInit {
             console.log('To Airport Code', this.selectedFlightAdvanced.toAirportCode);
             this.getToAirportDetails(this.selectedFlightAdvanced.toAirportCode);
 
+          }
+
+          if (acList.hasOwnProperty('Year', 'Year')) {
+            this.selectedFlightAdvanced.manufacYear = acList.Year;
+            this.selectedFlightAdvanced.manufacYearAvailable = true;
           }
           /*    this.selectedFlightAdvanced.airCraftModel = data.acList[0].Mdl;
               this.selectedFlightAdvanced.from = data.acList[0].From;
@@ -180,30 +185,30 @@ export class FlightSearchComponent implements OnInit {
     )
   }
 
-   getFromAirpotDetails(icao: string) {
+  getFromAirpotDetails(icao: string) {
     this.flightService.getAirpotDetails(icao).subscribe(
       response => {
 
-        if(response.hasOwnProperty('name','name')){
-          console.log('From Airport Data Received',response);
+        if (response.hasOwnProperty('name', 'name')) {
+          console.log('From Airport Data Received', response);
           this.selectedFlightAdvanced.fromAirportCoordinates[0] = Number(response.longitude);
           this.selectedFlightAdvanced.fromAirportCoordinates[1] = Number(response.latitude);
           this.fromAiport.name = response.name;
           console.log(this.selectedFlightAdvanced.fromAirportCoordinates);
 
 
-
         }
-        else{
+        else {
 
         }
       }
     );
   }
-  getToAirportDetails(icao: string){
+
+  getToAirportDetails(icao: string) {
     this.flightService.getAirpotDetails(icao).subscribe(
       response => {
-        if(response.hasOwnProperty('name','name')){
+        if (response.hasOwnProperty('name', 'name')) {
           console.log('To Airport Data Received', response);
           this.selectedFlightAdvanced.toAirportCoordinates[0] = Number(response.longitude);
           this.selectedFlightAdvanced.toAirportCoordinates[1] = Number(response.latitude);
@@ -212,7 +217,7 @@ export class FlightSearchComponent implements OnInit {
 
 
         }
-        else{
+        else {
 
         }
       }

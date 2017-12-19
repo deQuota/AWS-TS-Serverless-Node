@@ -129,10 +129,15 @@
         <h3 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b></h3>
         <h3 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b></h3>
         <h4 *ngIf="selectedFlightAdvanced?.airLineInfoAvailable">Airline <b>{{selectedFlightAdvanced?.airLine}}</b></h4>
+        <h4 *ngIf="selectedFlightAdvanced?.manufacYearAvailable">Year of Manufacture <b>{{selectedFlightAdvanced.manufacYear}}</b></h4>
       </div>
       <div class="row">
         <img src="{{selectedFlightAdvanced?.imageURL}}" class="thumbnail" alt="{{imageAlt}}">
       </div>
+      <div class="row">
+
+      </div>
+
     </div>
   </div>
 </div>

@@ -2,6 +2,8 @@ export class AdvancedFlightModel {
 
   airCraftModel: string;
   airCraftModelAvailable: boolean;
+  manufacYear: string;
+  manufacYearAvailable: boolean;
   airLine: string;
   airLineInfoAvailable : boolean;
   from: string;
