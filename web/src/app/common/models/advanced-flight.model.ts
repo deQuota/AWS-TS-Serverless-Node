@@ -4,6 +4,8 @@ export class AdvancedFlightModel {
   airCraftModelAvailable: boolean;
   manufacYear: string;
   manufacYearAvailable: boolean;
+  numberOfEngines: string;
+  numberOfEnginesAvailable: boolean;
   airLine: string;
   airLineInfoAvailable : boolean;
   from: string;
@@ -15,6 +17,8 @@ export class AdvancedFlightModel {
   toAvailable: boolean;
   toAirportCoordinates: number[];
   imageURL : string;
+  historyAvailable: boolean;
+  history: any;
 
   constructor(airCraftModelAvailable: boolean, fromAvailable: boolean, toAvailable: boolean) {
     this.airCraftModelAvailable = airCraftModelAvailable;

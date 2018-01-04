@@ -22,6 +22,7 @@ export class FlightSearchComponent implements OnInit {
   flightSelected = false;
   iconUrl;
   polyLinePoints: any = [];
+  polyLineHistory: any = [];
   imageAlt: string;
   template: string = `<img src="http://pa1.narvii.com/5722/2c617cd9674417d272084884b61e4bb7dd5f0b15_hq.gif" />`;
   j = 0;
@@ -66,11 +67,29 @@ export class FlightSearchComponent implements OnInit {
   }
 
   onClickFlightSelected(icao: string, callsign: string) {
-    /*this.spinnerService.show();*/
+   /* this.spinnerService.show();*/
     this.loading = true;
     this.getFlightOnce(icao);
     this.getImage(icao); // from icao
     this.getAdditionalData(callsign);
+    this.flightService.getTrackHistory(callsign).subscribe(
+      response => {
+        this.selectedFlightAdvanced.historyAvailable = true;
+        console.log('History Received', response.acList[0].Cot);
+
+        let Cot: any = {};
+        console.log('History Length', response.acList[0].Cot.length);
+        Cot = response.acList[0].Cot;
+        let y = response.acList[0].Cot.length/3;
+        let i = 0;
+        let j = 1;
+        for(let x=0; x < y; x++ ){
+          this.polyLineHistory[x] = {lat:parseFloat(Cot[i]), lon: parseFloat(Cot[j])};
+          i += 3;
+          j += 3;
+        }
+      }
+    );
 
     setInterval(() => {
       this.getFlightOnce(icao);
@@ -154,6 +173,14 @@ export class FlightSearchComponent implements OnInit {
           if (acList.hasOwnProperty('Year', 'Year')) {
             this.selectedFlightAdvanced.manufacYear = acList.Year;
             this.selectedFlightAdvanced.manufacYearAvailable = true;
+          }
+
+          if (acList.hasOwnProperty('Engines','Engines')){
+            this.selectedFlightAdvanced.numberOfEngines = acList.Engines;
+            this.selectedFlightAdvanced.numberOfEnginesAvailable = true;
+            console.warn('Distance >>', acList.Dst);
+            console.warn('Manufacturer >>', acList.Man);
+            console.warn('Registartion >>', acList.Reg);
           }
           /*    this.selectedFlightAdvanced.airCraftModel = data.acList[0].Mdl;
               this.selectedFlightAdvanced.from = data.acList[0].From;

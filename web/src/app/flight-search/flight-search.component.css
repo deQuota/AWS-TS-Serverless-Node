@@ -11,3 +11,16 @@ img {
   max-width: 100%;
   max-height: 300px;
 }
+
+.fetched-history{
+  color: #9932CC;
+}
+.tracked-by-you{
+  color: #0CBF12;
+}
+.up-to-now{
+  color: #000000;
+}
+.now-to-dest{
+  color: #F40C0C;
+}

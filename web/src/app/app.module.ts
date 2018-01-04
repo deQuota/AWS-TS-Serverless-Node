@@ -14,7 +14,7 @@ import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 
 import { AgmCoreModule} from "@agm/core";
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+
 import { LoadingModule } from 'ngx-loading';
 
 import { NgxGaugeModule } from 'ngx-gauge';
@@ -42,8 +42,8 @@ import { StatusGraphicComponent } from './status-graphic/status-graphic.componen
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBsEKEciQmGRaFdGqELGAgudgT-c_0iPGQ'
     }),
-    AgmSnazzyInfoWindowModule,
-    /*Ng4LoadingSpinnerModule.forRoot()*/
+
+    /*Ng4LoadingSpinnerModule.forRoot(),*/
     LoadingModule,
     NgxGaugeModule
 
