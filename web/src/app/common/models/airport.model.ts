@@ -12,4 +12,6 @@ export class AirportModel {
   location: string;
   longitude: string;
   name: string;
+  weatherData: any;
+  weatherSummary: string;
 }

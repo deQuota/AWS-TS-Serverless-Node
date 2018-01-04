@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FlightsService} from '../common/services/flights.service';
 import {AdvancedFlightModel} from "../common/models/advanced-flight.model";
 import {AirportModel} from "../common/models/airport.model";
-
 /*import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';*/
 
 @Component({
@@ -11,6 +10,7 @@ import {AirportModel} from "../common/models/airport.model";
   styleUrls: ['./flight-search.component.css']
 })
 export class FlightSearchComponent implements OnInit {
+
 
   loading = false;
   allFlights: any;
@@ -221,6 +221,14 @@ export class FlightSearchComponent implements OnInit {
           this.selectedFlightAdvanced.fromAirportCoordinates[0] = Number(response.longitude);
           this.selectedFlightAdvanced.fromAirportCoordinates[1] = Number(response.latitude);
           this.fromAiport.name = response.name;
+          this.flightService.getWeather(response.latitude,response.longitude).subscribe(
+              data => {
+                this.fromAiport.weatherData = data;
+                this.fromAiport.weatherSummary = data.weather[0].description;
+                console.error('From Weather Data >>>>', data);
+              }
+
+          );
           console.log(this.selectedFlightAdvanced.fromAirportCoordinates);
 
 
@@ -240,6 +248,14 @@ export class FlightSearchComponent implements OnInit {
           this.selectedFlightAdvanced.toAirportCoordinates[0] = Number(response.longitude);
           this.selectedFlightAdvanced.toAirportCoordinates[1] = Number(response.latitude);
           this.toAirport.name = response.name;
+          this.flightService.getWeather(response.latitude,response.longitude).subscribe(
+            data => {
+              this.toAirport.weatherData = data;
+              this.toAirport.weatherSummary = data.weather[0].description;
+              console.error('To Weather Data >>>>', data);
+            }
+
+          );
           console.log(this.selectedFlightAdvanced.toAirportCoordinates);
 
 
@@ -250,5 +266,6 @@ export class FlightSearchComponent implements OnInit {
       }
     );
   }
+
 
 }

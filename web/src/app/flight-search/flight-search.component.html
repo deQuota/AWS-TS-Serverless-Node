@@ -138,8 +138,8 @@
         <div class="row">
           <h4 *ngIf="selectedFlightAdvanced?.airCraftModelAvailable">Aircraft Model
             <b>{{selectedFlightAdvanced.airCraftModel}}</b></h4>
-          <h4 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b></h4>
-          <h4 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b></h4>
+          <h4 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b> <span>'{{fromAiport?.weatherSummary}}'</span> </h4>
+          <h4 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b> <span>'{{toAirport?.weatherSummary}}'</span></h4>
           <h5 *ngIf="selectedFlightAdvanced?.airLineInfoAvailable">Airline <b>{{selectedFlightAdvanced?.airLine}}</b>
           </h5>
           <h5 *ngIf="selectedFlightAdvanced?.manufacYearAvailable">Year of Manufacture <b>{{selectedFlightAdvanced.manufacYear}}</b>

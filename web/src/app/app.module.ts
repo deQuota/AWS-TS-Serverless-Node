@@ -21,6 +21,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { StatusGraphicComponent } from './status-graphic/status-graphic.component';
 
 
+
 /*import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';*/
 
 
@@ -45,7 +46,7 @@ import { StatusGraphicComponent } from './status-graphic/status-graphic.componen
 
     /*Ng4LoadingSpinnerModule.forRoot(),*/
     LoadingModule,
-    NgxGaugeModule
+    NgxGaugeModule,
 
 
   ],

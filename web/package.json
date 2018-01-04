@@ -27,6 +27,7 @@
     "copy-webpack-plugin": "^4.2.3",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
+    "ng2-opd-popup": "^1.1.21",
     "ng4-loading-spinner": "^1.1.1",
     "ngx-gauge": "^1.0.0-beta.1",
     "ngx-loading": "^1.0.9",
