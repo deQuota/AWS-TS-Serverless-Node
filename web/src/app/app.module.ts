@@ -19,6 +19,10 @@ import { LoadingModule } from 'ngx-loading';
 
 import { NgxGaugeModule } from 'ngx-gauge';
 import { StatusGraphicComponent } from './status-graphic/status-graphic.component';
+import { WeatherPopupComponent } from './weather-popup/weather-popup.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -31,7 +35,8 @@ import { StatusGraphicComponent } from './status-graphic/status-graphic.componen
     AppComponent,
     HomeComponent,
     FlightSearchComponent,
-    StatusGraphicComponent
+    StatusGraphicComponent,
+    WeatherPopupComponent
 
 
   ],
@@ -45,15 +50,18 @@ import { StatusGraphicComponent } from './status-graphic/status-graphic.componen
     }),
 
     /*Ng4LoadingSpinnerModule.forRoot(),*/
+
     LoadingModule,
     NgxGaugeModule,
+
 
 
   ],
   providers: [
     ClientService,
     FlightsService,
-    HttpClient
+    HttpClient,
+
 
   ],
   bootstrap: [AppComponent]

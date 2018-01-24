@@ -62,6 +62,7 @@
   </div>
   <div class="text-center" *ngIf="!loading">
     <h3>Tracking {{allCount}} flights approximately</h3>
+    <h5>Select a flight to track</h5>
   </div>
   <div class="col col-lg-12" *ngIf="flightSelected">
     <div class="row">
@@ -96,8 +97,8 @@
               </ng-template>
             </agm-snazzy-info-window>-->
           </agm-marker>
-
-          <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable" [strokeOpacity]="0.5">
+          <!--From Airport to flight ploy line-->
+         <!-- <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable" [strokeOpacity]="0.5">
             <agm-polyline-point [latitude]="selectedFlightAdvanced.fromAirportCoordinates[1]"
                                 [longitude]="selectedFlightAdvanced.fromAirportCoordinates[0]">
             </agm-polyline-point>
@@ -105,7 +106,7 @@
                                 [longitude]="polyLinePoints[0]?.lon">
 
             </agm-polyline-point>
-          </agm-polyline>
+          </agm-polyline>-->
           <agm-polyline *ngIf="selectedFlightAdvanced.toAvailable" [strokeColor]="'#F40C0C'" [strokeOpacity]="0.5">
             <agm-polyline-point [latitude]="polyLinePoints[polyLinePoints.length-1]?.lat"
                                 [longitude]="polyLinePoints[polyLinePoints.length-1]?.lon">
@@ -122,8 +123,8 @@
             <agm-polyline-point *ngFor="let point of polyLineHistory" [latitude]="point.lat"
                                 [longitude]="point.lon"></agm-polyline-point>
           </agm-polyline>
-
-          <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable && selectedFlightAdvanced.toAvailable"
+          <!--From AIrport to To Airport poly line-->
+         <!-- <agm-polyline *ngIf="selectedFlightAdvanced.fromAvailable && selectedFlightAdvanced.toAvailable"
                         [strokeColor]="'#008B8B'" [strokeOpacity]="0.5">
             <agm-polyline-point [latitude]="selectedFlightAdvanced.fromAirportCoordinates[1]"
                                 [longitude]="selectedFlightAdvanced.fromAirportCoordinates[0]">>
@@ -131,15 +132,15 @@
             <agm-polyline-point [latitude]="selectedFlightAdvanced.toAirportCoordinates[1]"
                                 [longitude]="selectedFlightAdvanced.toAirportCoordinates[0]">>
             </agm-polyline-point>
-          </agm-polyline>
+          </agm-polyline>-->
         </agm-map>
       </div>
       <div id="right-column" class="col col-lg-4">
         <div class="row">
           <h4 *ngIf="selectedFlightAdvanced?.airCraftModelAvailable">Aircraft Model
             <b>{{selectedFlightAdvanced.airCraftModel}}</b></h4>
-          <h4 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b> <span>'{{fromAiport?.weatherSummary}}'</span> </h4>
-          <h4 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b> <span>'{{toAirport?.weatherSummary}}'</span></h4>
+          <h4 *ngIf="selectedFlightAdvanced?.fromAvailable">From <b>{{selectedFlightAdvanced.from}}</b> <span>'{{fromAiport?.weatherSummary}}'</span> <span title={{fromAiport?.weatherData|json}}><small>Detailed Weather</small></span></h4>
+          <h4 *ngIf="selectedFlightAdvanced?.toAvailable">To <b>{{selectedFlightAdvanced.to}}</b> <span>'{{toAirport?.weatherSummary}}'</span> <span title={{toAirport?.weatherData|json}}><small>Detailed Weather</small></span></h4>
           <h5 *ngIf="selectedFlightAdvanced?.airLineInfoAvailable">Airline <b>{{selectedFlightAdvanced?.airLine}}</b>
           </h5>
           <h5 *ngIf="selectedFlightAdvanced?.manufacYearAvailable">Year of Manufacture <b>{{selectedFlightAdvanced.manufacYear}}</b>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild , Inject} from '@angular/core';
 import {FlightsService} from '../common/services/flights.service';
 import {AdvancedFlightModel} from "../common/models/advanced-flight.model";
 import {AirportModel} from "../common/models/airport.model";
@@ -266,6 +266,5 @@ export class FlightSearchComponent implements OnInit {
       }
     );
   }
-
 
 }
