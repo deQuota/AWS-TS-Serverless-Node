@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@qontu/ngx-inline-editor": "^0.2.0-alpha.12",
+    "aws-iot-device-sdk": "^2.2.0",
     "bootstrap": "^3.3.7",
     "copy-webpack-plugin": "^4.2.3",
     "core-js": "^2.4.1",

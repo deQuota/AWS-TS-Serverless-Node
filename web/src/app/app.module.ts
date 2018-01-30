@@ -7,8 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from "./app-routing.module";
 import {ClientService} from "./common/services/client.service";
 import { FlightsService} from './common/services/flights.service';
+import {NotifierService} from "./common/services/notifier.service";
 import { HttpClientModule} from "@angular/common/http";
 import { HttpClient} from "@angular/common/http";
+import { FormsModule} from "@angular/forms";
 import { HttpHandler} from "@angular/common/http";
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
@@ -17,11 +19,13 @@ import { AgmCoreModule} from "@agm/core";
 
 import { LoadingModule } from 'ngx-loading';
 
+
 import { NgxGaugeModule } from 'ngx-gauge';
 import { StatusGraphicComponent } from './status-graphic/status-graphic.component';
 import { WeatherPopupComponent } from './weather-popup/weather-popup.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificatorComponent } from './notificator/notificator.component';
 
 
 
@@ -36,7 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     FlightSearchComponent,
     StatusGraphicComponent,
-    WeatherPopupComponent
+    WeatherPopupComponent,
+    NotificatorComponent
 
 
   ],
@@ -53,6 +58,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
     LoadingModule,
     NgxGaugeModule,
+    FormsModule
 
 
 
@@ -61,6 +67,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClientService,
     FlightsService,
     HttpClient,
+    NotifierService
 
 
   ],

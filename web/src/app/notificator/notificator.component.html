@@ -1,0 +1,12 @@
+  <br>
+  <button (click)="onClickGetKeys()">GetKeys</button>
+  <br>
+  <button (click)="onClickConnect()">Connect</button>
+  <br>
+  <label>
+  <input type="text" [(ngModel)]="message">
+    <input type="button" value="Notify Others"  (click)="onClickSend()">
+
+  </label>
+  <p id="log"></p>
+
