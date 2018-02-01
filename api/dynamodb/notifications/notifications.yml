@@ -1,16 +1,14 @@
 Type: AWS::DynamoDB::Table
 Properties:
-  TableName: Clients
+  TableName: Notifications
   AttributeDefinitions:
-    - AttributeName: clientId
+    - AttributeName: notificationId
       AttributeType: S
 
   KeySchema:
-    - AttributeName: clientId
+    - AttributeName: notificationId
       KeyType: HASH
 
   ProvisionedThroughput:
       ReadCapacityUnits: 5
       WriteCapacityUnits: 5
-
-

@@ -12,6 +12,12 @@ Properties:
         Resource:
           - arn:aws:dynamodb:*:*:table/Clients
           - arn:aws:dynamodb:*:*:table/Clients/*
+          - arn:aws:dynamodb:*:*:table/ClientUpdates
+          - arn:aws:dynamodb:*:*:table/ClientUpdates/*
+          - arn:aws:dynamodb:*:*:table/Notifications
+          - arn:aws:dynamodb:*:*:table/Notifications/*
+          - arn:aws:dynamodb:*:*:table/NotificationUser
+          - arn:aws:dynamodb:*:*:table/NotificationUser/*
 
 
   Roles:

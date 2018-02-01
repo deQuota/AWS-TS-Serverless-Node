@@ -19,9 +19,11 @@
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT",
   "dependencies": {
+    "aws-iot-device-sdk": "^2.2.0",
     "aws-sdk": "^2.155.0",
     "request": "^2.83.0",
     "require": "^2.4.20",
+    "uuid": "^3.2.1",
     "winston": "^2.4.0"
   }
 }

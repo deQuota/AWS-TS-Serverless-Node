@@ -1,6 +1,6 @@
 Type: AWS::DynamoDB::Table
 Properties:
-  TableName: Clients
+  TableName: ClientUpdates
   AttributeDefinitions:
     - AttributeName: clientId
       AttributeType: S
@@ -12,5 +12,3 @@ Properties:
   ProvisionedThroughput:
       ReadCapacityUnits: 5
       WriteCapacityUnits: 5
-
-
