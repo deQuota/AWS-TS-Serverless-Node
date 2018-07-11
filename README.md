@@ -10,3 +10,4 @@ This project uses AWS API Gateway, S3, DynamoDB and Lambda with Serverless, Node
 https://d3sli3u0tu2vuv.cloudfront.net/
 https://du39ptqgm81gi.cloudfront.net/
 
+https://drive.google.com/open?id=13jHI6s27_8P5KXmFl8plm7dyOREX8Jey
