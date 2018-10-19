@@ -2,6 +2,7 @@
 
 
 # Live example https://dswebck4y09l1.cloudfront.net/flightsearch
+beta works well with flights over european region
 
 LiveWings is a real time solution to track filghts all most all around the world, for aviation enthuastics.
 
