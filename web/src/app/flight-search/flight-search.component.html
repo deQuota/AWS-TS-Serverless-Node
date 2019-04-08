@@ -29,12 +29,15 @@
 </div>-->
 <div id="page-content" class="page-content">
   <button *ngIf="flightSelected" class="btn btn-danger" (click)="onCilckBackToWM()">Back to World Map</button>
-  <div class="row">
-    <div class="col col-lg-6">
-
-
-    </div>
-    <div class="col col-lg-6">
+  <div class="row" *ngIf="!loading">
+    <div class="col col-lg-12">
+      <nav class="navbar navbar-light bg-light">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Callsign" aria-label="Search Callsign" [(ngModel)]="searchVal" (ngModelChange)="searching()">
+        <div *ngIf="filtered.length > 0" style="height: 100px; overflow: auto">
+          <br>
+            <button  class="btn btn-sm btn-success" *ngFor="let item of filtered" (click)="onClickFlightSelected(item[0], item[1])">{{(item[1]=== ''?  item[0]: item[1])}}</button>
+        </div>
+      </nav>
 
     </div>
   </div>

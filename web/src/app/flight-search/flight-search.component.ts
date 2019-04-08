@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild , Inject} from '@angular/core';
 import {FlightsService} from '../common/services/flights.service';
 import {AdvancedFlightModel} from "../common/models/advanced-flight.model";
 import {AirportModel} from "../common/models/airport.model";
+import {forEach} from "@angular/router/src/utils/collection";
 /*import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';*/
 
 @Component({
@@ -13,7 +14,7 @@ export class FlightSearchComponent implements OnInit {
 
 
   loading = false;
-  allFlights: any;
+  allFlights: any = [];
   allCount: number;
   selectedFlight: any;
   selectedFlightAdvanced: AdvancedFlightModel = new AdvancedFlightModel(false, false, false);
@@ -26,6 +27,8 @@ export class FlightSearchComponent implements OnInit {
   imageAlt: string;
   template: string = `<img src="http://pa1.narvii.com/5722/2c617cd9674417d272084884b61e4bb7dd5f0b15_hq.gif" />`;
   j = 0;
+  searchVal = '';
+  filtered = [];
 
   constructor(private flightService: FlightsService) {
     this.selectedFlightAdvanced.airCraftModel = null;
@@ -49,6 +52,14 @@ export class FlightSearchComponent implements OnInit {
       this.onInitGetAll();
     }, 60000);
 
+
+  }
+  searching(){
+    console.log('exe');
+
+    this.filtered = this.allFlights.filter(
+      flight => flight[1].toLowerCase().includes(this.searchVal.toLowerCase())
+    );
 
   }
 
@@ -225,7 +236,7 @@ export class FlightSearchComponent implements OnInit {
               data => {
                 this.fromAiport.weatherData = data;
                 this.fromAiport.weatherSummary = data.weather[0].description;
-                console.error('From Weather Data >>>>', data);
+                console.log('From Weather Data >>>>', data);
               }
 
           );
@@ -252,7 +263,7 @@ export class FlightSearchComponent implements OnInit {
             data => {
               this.toAirport.weatherData = data;
               this.toAirport.weatherSummary = data.weather[0].description;
-              console.error('To Weather Data >>>>', data);
+              console.log('To Weather Data >>>>', data);
             }
 
           );
