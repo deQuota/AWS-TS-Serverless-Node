@@ -15,6 +15,7 @@ export class FlightSearchComponent implements OnInit {
 
   loading = false;
   allFlights: any = [];
+  newAllFlights: any = [];
   allCount: number;
   selectedFlight: any;
   selectedFlightAdvanced: AdvancedFlightModel = new AdvancedFlightModel(false, false, false);
@@ -68,6 +69,7 @@ export class FlightSearchComponent implements OnInit {
       this.flightService.getAllFlights().subscribe(
         response => {
           this.allFlights = response.message;
+          this.filtered = this.allFlights;
           this.allCount = this.allFlights.length;
           console.log('Count', response.count);
           console.log(this.allFlights);
@@ -86,8 +88,6 @@ export class FlightSearchComponent implements OnInit {
     this.flightService.getTrackHistory(callsign).subscribe(
       response => {
         this.selectedFlightAdvanced.historyAvailable = true;
-        console.log('History Received', response.acList[0].Cot);
-
         let Cot: any = {};
         console.log('History Length', response.acList[0].Cot.length);
         Cot = response.acList[0].Cot;

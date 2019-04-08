@@ -44,7 +44,7 @@
   <div class="col col-lg-12" *ngIf="!flightSelected">
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="2" [minZoom]="2">
-      <agm-marker *ngFor="let flight of allFlights" [latitude]=flight[6] [longitude]=flight[5]
+      <agm-marker *ngFor="let flight of filtered" [latitude]=flight[6] [longitude]=flight[5]
                   [iconUrl]="(flight[10]>0 && flight[10]<91) ? 'assets/icons/flight045.png': (flight[10]>90 && flight[10]<181)? 'assets/icons/flight135.png':(flight[10]>180 && flight[10]<270)? 'assets/icons/flight225.png':'assets/icons/flight315.png'"
                   [title]="(flight[1]).concat('\n').concat(flight[2])"
                   [markerClickable]="true" (markerClick)="onClickFlightSelected(flight[0],flight[1])"
